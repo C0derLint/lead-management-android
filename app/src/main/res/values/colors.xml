@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#ff1744</color>
+    <color name="colorPrimaryDark">#ff1744</color>
+    <color name="colorAccent">#ff1744</color>
     <color name="colorPopup">#F2F2F2</color>
-    <color name="darkColorPrimary">#04bcf4</color>
-    <color name="darkColorPrimaryDark">#153f87</color>
-    <color name="darkColorAccent">#FF4081</color>
+    <color name="darkColorPrimary">#ff1744</color>
+    <color name="darkColorPrimaryDark">#000000</color>
+    <color name="darkColorAccent">#ff1744</color>
 </resources>
