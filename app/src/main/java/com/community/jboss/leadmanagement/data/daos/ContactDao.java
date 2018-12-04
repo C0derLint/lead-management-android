@@ -27,5 +27,10 @@ public interface ContactDao {
     Contact getContact(String id);
 
     @Query("SELECT * FROM contact")
-    LiveData<List<Contact>> getContacts();
+    LiveData<List<Contact>> getLiveContacts();
+
+    @Query("SELECT * FROM contact")
+    List<Contact> getContacts();
+
+
 }

@@ -96,6 +96,10 @@ public class ImportContactActivity extends AppCompatActivity {
 
         Cursor people = getContentResolver().query(uri, projection, null, null, null);
 
+        if(people == null){
+            return new ArrayList<>();
+        }
+
         int indexName = people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
         int indexNumber = people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
 

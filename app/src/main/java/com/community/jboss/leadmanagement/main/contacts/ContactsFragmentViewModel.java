@@ -18,7 +18,7 @@ public class ContactsFragmentViewModel extends AndroidViewModel {
         super(application);
 
         final ContactDao dao = DbUtil.contactDao(getApplication());
-        mContacts = dao.getContacts();
+        mContacts = dao.getLiveContacts();
     }
 
     public LiveData<List<Contact>> getContacts() {

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="350dp"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     android:background="@color/colorPopup"
     android:orientation="vertical"
@@ -27,191 +28,297 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="175dp"
+            android:layout_height="175dp"
             android:layout_gravity="center"
+            android:id="@+id/details_image"
+            android:maxHeight="100dp"
             android:src="@drawable/ic_person_grey" />
-
-        <android.support.v7.widget.CardView
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/cardview_shadow_end_color">
-
-            <LinearLayout
+            android:layout_height="match_parent">
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/popup_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:paddingLeft="10dp"
-                    android:paddingStart="10dp"
-                    android:paddingRight="0dp"
-                    android:paddingEnd="0dp"
-                    android:text="Saba Khukhunashvili"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                android:layout_marginTop="10dp"
+                android:background="@color/cardview_shadow_end_color">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginTop="20dp"
-                    android:gravity="center"
-                    android:weightSum="3"
-                    android:baselineAligned="false">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center">
-
-                        <Button
-                            android:id="@+id/btn_call"
-                            android:layout_width="27dp"
-                            android:layout_height="27dp"
-                            android:background="@drawable/ic_phone_outline"
-                            android:backgroundTint="@color/colorAccent" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center">
-
-                        <Button
-                            android:id="@+id/btn_msg"
-                            android:layout_width="27dp"
-                            android:layout_height="27dp"
-                            android:background="@drawable/ic_msg"
-                            android:backgroundTint="@color/colorAccent" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center">
-
-                        <Button
-                            android:id="@+id/btn_edit"
-                            android:layout_width="27dp"
-                            android:layout_height="27dp"
-                            android:background="@drawable/ic_edit_outline"
-                            android:backgroundTint="@color/colorAccent" />
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginStart="15dp"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_phone_grey_24dp" />
-
-
-                        <TextView
-                            android:id="@+id/txt_num"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginStart="20dp"
-                            android:text="+91 1231231231"
-                            android:textColor="@android:color/black"
-                            android:textSize="17sp" />
-
-                    </LinearLayout>
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
                     <TextView
+                        android:id="@+id/popup_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="45dp"
-                        android:layout_marginStart="45dp"
-                        android:text="@string/mobile" />
+                        android:layout_gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingRight="0dp"
+                        android:paddingEnd="0dp"
+                        android:text="Saba Khukhunashvili"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-                    <View
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="45dp"
-                        android:layout_marginStart="45dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@android:color/darker_gray" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center"
+                        android:weightSum="3"
+                        android:baselineAligned="false">
 
-                </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginStart="15dp"
-                    android:orientation="vertical">
+                            <Button
+                                android:id="@+id/btn_call"
+                                android:layout_width="27dp"
+                                android:layout_height="27dp"
+                                android:background="@drawable/ic_phone_outline"
+                                android:backgroundTint="@color/colorAccent" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center">
+
+                            <Button
+                                android:id="@+id/btn_msg"
+                                android:layout_width="27dp"
+                                android:layout_height="27dp"
+                                android:background="@drawable/ic_msg"
+                                android:backgroundTint="@color/colorAccent" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center">
+
+                            <Button
+                                android:id="@+id/btn_edit"
+                                android:layout_width="27dp"
+                                android:layout_height="27dp"
+                                android:background="@drawable/ic_edit_outline"
+                                android:backgroundTint="@color/colorAccent" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
+                        android:orientation="vertical">
 
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_marginTop="1dp"
-                            android:src="@drawable/ic_email"
-                            android:tint="@android:color/darker_gray" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_phone"
+                                android:id="@+id/popup_helper_phone"/>
+
+
+                            <TextView
+                                android:id="@+id/txt_num"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginStart="20dp"
+                                android:text="+91 1231231231"
+                                android:textColor="@android:color/black"
+                                android:textSize="17sp" />
+
+                        </LinearLayout>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginStart="20dp"
-                            android:text="sabaxuxunashvili@gmail.com"
-                            android:textColor="@android:color/black"
-                            android:textSize="17sp"
-                            android:id="@+id/popupMail"/>
+                            android:layout_marginLeft="45dp"
+                            android:layout_marginStart="45dp"
+                            android:text="@string/mobile" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="45dp"
+                            android:layout_marginStart="45dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@android:color/darker_gray" />
 
                     </LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="45dp"
-                        android:layout_marginStart="45dp"
-                        android:text="@string/email" />
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
+                        android:orientation="vertical">
 
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginTop="1dp"
+                                android:src="@drawable/ic_email_blue"
+                                android:id="@+id/popup_helper_email"/>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginStart="20dp"
+                                android:text="sabaxuxunashvili@gmail.com"
+                                android:textColor="@android:color/black"
+                                android:textSize="17sp"
+                                android:id="@+id/popupMail"/>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="45dp"
+                            android:layout_marginStart="45dp"
+                            android:text="@string/email" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="45dp"
+                            android:layout_marginStart="45dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@android:color/darker_gray" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_location"
+                                android:id="@+id/popup_helper_adress"/>
+
+
+                            <TextView
+                                android:id="@+id/details_adress"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginStart="20dp"
+                                android:text="Tbilisi, Georgia"
+                                android:textColor="@android:color/black"
+                                android:textSize="17sp" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="45dp"
+                            android:layout_marginStart="45dp"
+                            android:text="@string/location" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="45dp"
+                            android:layout_marginStart="45dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@android:color/darker_gray" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_notes_blue"
+                                android:id="@+id/popup_helper_note"/>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginStart="20dp"
+                                android:text="@string/notes"
+                                android:id="@+id/details_note_hint"
+                                android:textColor="@android:color/black"
+                                android:textSize="17sp" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="45dp"
+                            android:layout_marginStart="45dp"
+                            android:id="@+id/details_note"
+                            android:text="This is a note! This is a note! This is a note! This is a note! "
+                            android:textColor="@android:color/black"/>
+
+
+                    </LinearLayout>
 
 
                 </LinearLayout>
 
-
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
+            </android.support.v7.widget.CardView>
+        </ScrollView>
     </LinearLayout>
 
 

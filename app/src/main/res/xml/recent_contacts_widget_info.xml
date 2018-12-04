@@ -1,0 +1,8 @@
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="225dip"
+    android:minHeight="150dip"
+    android:updatePeriodMillis="300000"
+    android:initialLayout="@layout/recent_contacts_widget"
+    android:autoAdvanceViewId="@+id/words"
+    android:previewImage="@drawable/ic_add_material"
+    android:resizeMode="horizontal|vertical" />

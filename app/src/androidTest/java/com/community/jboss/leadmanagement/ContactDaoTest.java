@@ -33,7 +33,7 @@ public class ContactDaoTest {
         mDatabase.getContactDao().insert(tom);
         mDatabase.getContactDao().insert(maria);
 
-        final List<Contact> contacts = mDatabase.getContactDao().getContacts().getValue();
+        final List<Contact> contacts = mDatabase.getContactDao().getLiveContacts().getValue();
         assert (contacts != null);
         assert (!contacts.isEmpty());
         assert (contacts.size() == 3);

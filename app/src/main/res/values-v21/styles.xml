@@ -3,7 +3,6 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
     <style name="AppTheme.Dark" parent="Theme.AppCompat">
@@ -16,6 +15,8 @@
     <style name="AppTheme.BG" parent="AppTheme.Dark">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="colorControlActivated">@android:color/white</item>
+        <item name="colorControlNormal">@android:color/white</item>
     </style>
 
 </resources>

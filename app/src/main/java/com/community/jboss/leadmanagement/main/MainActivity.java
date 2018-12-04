@@ -32,24 +32,22 @@ import com.community.jboss.leadmanagement.main.contacts.ContactsFragment;
 import com.community.jboss.leadmanagement.main.contacts.editcontact.EditContactActivity;
 import com.community.jboss.leadmanagement.main.contacts.importcontact.ImportContactActivity;
 import com.community.jboss.leadmanagement.main.groups.GroupsFragment;
+import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
 
 import static com.community.jboss.leadmanagement.SettingsActivity.PREF_DARK_THEME;
@@ -57,7 +55,7 @@ import static com.community.jboss.leadmanagement.SettingsActivity.PREF_DARK_THEM
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
-    private final int ID = 512;
+    private int ID;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.fab)
@@ -78,8 +76,11 @@ public class MainActivity extends BaseActivity
 
     public static boolean useDarkTheme;
 
+    // public EditText crash_the_fabric;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Fabric.with(this, new Crashlytics());
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         useDarkTheme = preferences.getBoolean(PREF_DARK_THEME, false);
 
@@ -102,24 +103,6 @@ public class MainActivity extends BaseActivity
         header.findViewById(R.id.sign_in_button).setOnClickListener(this);
         header.findViewById(R.id.sign_out_button).setOnClickListener(this);
 
-        boolean isFirebaseAlreadyIntialized=false;
-        List<FirebaseApp> firebaseApps = FirebaseApp.getApps(this);
-        for(FirebaseApp app : firebaseApps){
-            if(app.getName().equals(FirebaseApp.DEFAULT_APP_NAME)){
-                isFirebaseAlreadyIntialized=true;
-            }
-        }
-
-        if(!isFirebaseAlreadyIntialized) {
-            FirebaseApp.initializeApp(this, new FirebaseOptions.Builder()
-                    .setApiKey("YOUR_API_KEY")
-                    .setApplicationId("YOUR_APPLICATION_ID")
-                    .setDatabaseUrl("YOUR_DB_URL")
-                    .setGcmSenderId("YOUR_SENDER_ID")
-                    .setStorageBucket("YOUR_STORAGE_BUCKET").build());
-        }
-
-        
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken("YOUR_REQUEST_ID_TOKEN")
                 .requestEmail()
@@ -130,9 +113,10 @@ public class MainActivity extends BaseActivity
 
 
         permissionManager = new PermissionManager(this, this);
-        if (!permissionManager.permissionStatus(Manifest.permission.READ_PHONE_STATE)) {
-            permissionManager.requestPermission(ID, Manifest.permission.READ_PHONE_STATE);
-        }
+
+        ID = permissionManager.checkAndAskPermissions(Manifest.permission.READ_PHONE_STATE,
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                Manifest.permission.RECORD_AUDIO);
 
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
@@ -149,6 +133,8 @@ public class MainActivity extends BaseActivity
         }
 
         initFab();
+        Crashlytics.log("Happy GCI 2018");
+        // crash_the_fabric.setText("CRASH IS COMINGG");
     }
 
     private void selectInitialNavigationItem() {
@@ -179,6 +165,12 @@ public class MainActivity extends BaseActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+
+        // Disable this action if user is not signed in...
+        if(mAuth.getCurrentUser() == null){
+            Toast.makeText(this, R.string.not_signed, Toast.LENGTH_SHORT).show();
+            return false;
+        }
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
@@ -279,11 +271,8 @@ public class MainActivity extends BaseActivity
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
-                // Google Sign In failed, update UI appropriately
-                Log.w(TAG, "Google sign in failed", e);
-                // [START_EXCLUDE]
+                Toast.makeText(this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 updateUI(null);
-                // [END_EXCLUDE]
             }
         }
     }
@@ -324,7 +313,17 @@ public class MainActivity extends BaseActivity
         mAuth.signOut();
 
         // Google sign out
-        mGoogleSignInClient.signOut().addOnCompleteListener(this, task -> updateUI(null));
+        mGoogleSignInClient.signOut().addOnCompleteListener(this,
+                new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.getException() != null){
+                            Toast.makeText(MainActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        updateUI(null);
+                    }
+                });
     }
 
     private void updateUI(FirebaseUser user) {
@@ -345,6 +344,14 @@ public class MainActivity extends BaseActivity
 
             header.findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             header.findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
+
+
+            // Enable navigation drawer items
+            Menu menu = navigationView.getMenu();
+            for (int i=0; i<5; i++){
+                menu.getItem(i).setEnabled(true);
+            }
+
         } else {
             Toast.makeText(getApplicationContext(), "Not signed in", Toast.LENGTH_SHORT).show();
 
@@ -354,6 +361,12 @@ public class MainActivity extends BaseActivity
 
             header.findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
             header.findViewById(R.id.sign_out_button).setVisibility(View.GONE);
+
+            // Disable navigation drawer items
+            Menu menu = navigationView.getMenu();
+            for (int i=0; i<4; i++){
+                menu.getItem(i).setEnabled(false);
+            }
         }
     }
 
@@ -371,7 +384,13 @@ public class MainActivity extends BaseActivity
     public void initFab() {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.content_frame);
         if (fragment instanceof ContactsFragment) {
-            fab.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), EditContactActivity.class)));
+            fab.setOnClickListener(view -> {
+                if(mAuth.getCurrentUser() != null) {
+                    startActivity(new Intent(getApplicationContext(), EditContactActivity.class));
+                }else {
+                    Toast.makeText(this, R.string.not_signed, Toast.LENGTH_SHORT).show();
+                }
+            });
             fab.setImageResource(R.drawable.ic_add_white_24dp);
         }
     }

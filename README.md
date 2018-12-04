@@ -1,25 +1,25 @@
 # lead-management-android
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/465ebd9884094ae3837142f13857b53a)](https://www.codacy.com/app/UniverseObserver/lead-management-android?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=UniverseObserver/lead-management-android&amp;utm_campaign=Badge_Grade)
-[![Build Status](https://travis-ci.org/jboss-outreach/lead-management-android.svg?branch=master)](https://travis-ci.org/jboss-outreach/lead-management-android)
+[![Build Status](https://travis-ci.org/JBossOutreach/lead-management-android.svg?branch=master)](https://travis-ci.org/JBossOutreach/lead-management-android)
 
 ## Lead (sales lead)
 A sales lead is a potential sales contact, an individual or organization that expresses an interest in your goods or services. Leads are typically obtained through the referral of an existing customer, or through a direct response to advertising or publicity. A company's marketing department is typically responsible for lead generation.
 
 #### How it works
-*Lead-Management* in the call process shows a notification. If the user clicks this notification, they will simply be redirected to the application to save the contact. If the contact exists, you will see details of the caller, if not you will be redirected to adding this number as contact. After this, the app stores data of the caller in the local database.
+*Lead-Management* in the call process shows a notification. If the user clicks this notification, they will simply be redirected to the application to save the contact. If the contact exists, you will see details of the caller, if not you will be redirected to adding this number as a contact. After this, the app stores data of the caller in the local database.
 This app is currently in development, which means that in the future, many more features will be added.
 
 ### Work Flow
-* A Splash Screen that Displays the app icon everytime that app is launched.
-* A Quick Walkthorugh(Slider) of the Visiting Card Android App when the App is launched for the first time.
-* A Login Activity to ensure only Authentic Users use the app - Implemened using Firebase Authentication.
-* A Base Activity with a BottomNavigation Bar that allows the user to navigate through the list of cotnacts and groups.
+* A Splash Screen that displays the app icon everytime that app is launched.
+* A Quick Walkthrough(Slider) of the Visiting Card Android App when the App is launched for the first time.
+* A Login Activity to ensure only Authentic Users use the app - Implemented using Firebase Authentication.
+* A Base Activity with a Bottom Navigation Bar that allows the user to navigate through the list of contacts and groups.
 * Contacts Fragment that shows the saved contacts in a RecyclerView with a FAB to add a new contact
-* Clicking on the RecyclerView item opens a Dialog that shows the information for that contact and allowing us to edit/call them.
+* Clicking on the RecyclerView item opens a dialog that shows the information for that contact and allows us to edit/call them.
 * Clicking on the Edit Screen opens a the EditContactActivity.
-* Inside the Base Activity, click on the FAB opens the same EditContactActivity to add a new contact.
-* The app should also show a notification when the call is ended, askig the user to save the details for that contact.
-* On clickig the notification, if the caller's details exists on the server, show it to the user, else ask the user to enter their details.
+* Inside the Base Activity, clicking on the FAB opens the same EditContactActivity to add a new contact.
+* The app should also show a notification when the call is ended, asking the user to save the details for that contact.
+* On clicking the notification, if the caller's details exist on the server, show it to the user, else ask the user to enter their details.
 
 ## Flow Diagram for the app
 ![](https://raw.githubusercontent.com/JBossOutreach/lead-management-android/master/art.jpg)
@@ -32,10 +32,12 @@ This app is currently in development, which means that in the future, many more 
 ```
 $ git clone https://github.com/[YOUR-USERNAME]/lead-management-android.git
 ```
-**3.** **Open the project** using [Android Studio](https://developer.android.com/studio/index.html) by clicking **Open an existing Android Studio Project**.
+**3.** Set up the Firebase project, Download google-services.json and paste it into app/ folder
+
+**4.** **Open the project** using [Android Studio](https://developer.android.com/studio/index.html) by clicking **Open an existing Android Studio Project**.
 ![](https://lh4.googleusercontent.com/ttV9QNEuOltxmSiZSfRZxDPy_ZetUaBwmm7MeyXTo6xNB8nc6kFAbwU5zWWLaU0AB1xyP8vigMV9Hm7WmJrA=w1863-h978)
 
-**4.** **Run the project on an AVD** (Android Virtual Device) by clicking the **Run** button on Android Studio Toolbar.
+**5.** **Run the project on an AVD** (Android Virtual Device) by clicking the **Run** button on Android Studio Toolbar.
 
 ## Contributing
 

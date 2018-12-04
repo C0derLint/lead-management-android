@@ -100,4 +100,17 @@ public class EditContactActivityViewModel extends AndroidViewModel {
             dao.update(contactNumber);
         }
     }
+
+    public void saveData(String email, String location, String query, byte[] image, String notes) {
+        final ContactDao dao = DbUtil.contactDao(getApplication());
+        Contact contact = mContact.getValue();
+        if(contact!=null){
+            contact.setMail(email);
+            contact.setLocation(location);
+            contact.setQuery(query);
+            contact.setImage(image);
+            contact.setNotes(notes);
+        }
+        dao.update(contact);
+    }
 }

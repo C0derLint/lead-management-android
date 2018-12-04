@@ -34,7 +34,7 @@
     <string name="deleteWarning">Are you sure you want to delete this contact?</string>
     <string name="search">Search contact</string>
     <string name="import_contacts">Import contacts</string>
-    
+
     <string name="no_results">No results found</string>
     <string name="email">Email</string>
     <string name="mobile">Mobile</string>
@@ -73,5 +73,21 @@
     <string name="google_title_text">Google Sign In</string>
 
     <string name="phone_title_text">Phone Number</string>
+    <string name="location">Location</string>
+    <string name="query">Query</string>
+    <string name="notes">Notes</string>
+
+    <string name="preferences_name">com.community.jboss.leadmanagement.preferences</string>
+    <string name="was_run_before_key">com.community.jboss.leadmanagement.wasrunbefore</string>
+    <string name="slide_1_header">Welcome to Lead Management!</string>
+    <string name="slide_1_content">A better way to manage your leads</string>
+    <string name="slide_2_header">Everything in one place</string>
+    <string name="slide_2_content">Easily manage and safely store all your business contacts</string>
+    <string name="slide_3_header">Never forget again</string>
+    <string name="slide_3_content">Record conversations to always have a backup of your important business calls</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="add_contact">Add contact</string>
+    <string name="not_signed">Please, sign in first...</string>
 
 </resources>
